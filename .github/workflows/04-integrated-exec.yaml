@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  inspecao:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,7 @@ jobs:
       - name: Installing dependencies
         run: yarn
 
-      - name: Validating code standardization
+      - name: Validating linting
         run: yarn lint
 
   unit:
@@ -59,19 +59,19 @@ jobs:
       #     node-version: latest
 
       # instalacao das dependencies
-      - name: Instalando dependências
+      - name: Installing dependencies
         # ou yarn install
         run: yarn
 
       # instalacao do Playwright
-      - name: Instalando Playwright
+      - name: Installing Playwright
         run: yarn playwright install
 
       # executando testes e2e
-      - name: Executando testes e2e
+      - name: Running e2e tests
         run: yarn run e2e
 
-      - name: Publishing results in pull request
+      - name: Publishing results in PR
         uses: dorny/test-reporter@v1
         if: ${{ !cancelled() }}
         with:
@@ -83,5 +83,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy simulation
+      - name: Simulating deploy
         run: echo "simulating deploy message"
