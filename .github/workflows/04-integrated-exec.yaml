@@ -75,7 +75,7 @@ jobs:
         uses: dorny/test-reporter@v1
         if: ${{ !cancelled() }}
         with:
-          name: Test Report
+          name: e2e-report
           path: './test-results/results.xml'
           reporter: java-junit
 
