@@ -12,28 +12,28 @@ on:
 
 # trabalhos/tarefas dentro da pipeline = jobs
 jobs:
-  e2e-tests: 
+  e2e-tests:
     # maquina que o job vai executar - "vai rodar em:"
     runs-on: ubuntu-latest
     # declaracao de passos a serem executados no script de build
     steps:
       # clone do projeto. Comando pra usar uma action
       - uses: actions/checkout@v4
-      
-      # instalacao do node 
+
+      # instalacao do node
       # - uses: actions/setup-node@v4
       #   with:
       #     node-version: latest
-      
+
       # instalacao das dependencies
       - name: Instalando dependências
         # ou yarn install
         run: yarn
-      
+
       # instalacao do Playwright
       - name: Instalando Playwright
         run: yarn playwright install
-      
+
       # executando testes e2e
       - name: Executando testes e2e
         run: yarn run e2e
